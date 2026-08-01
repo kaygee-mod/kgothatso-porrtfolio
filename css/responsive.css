@@ -1,0 +1,465 @@
+/* =============================================
+   RESPONSIVE.CSS — Mobile-First Breakpoints
+   ============================================= */
+
+/* =============================================
+   BASE BUTTON TOUCH TARGETS (all screen sizes)
+   Ensures every tappable element meets the
+   minimum 44×44px touch target recommendation.
+   ============================================= */
+.btn,
+.filter-btn,
+.nav-toggle,
+.theme-toggle,
+.nav-icon-btn,
+.back-to-top,
+.modal-close,
+.project-link-btn,
+.read-more-btn {
+  min-height: 44px;
+  min-width: 44px;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;         /* removes 300ms tap delay */
+}
+
+/* Inline/small buttons keep their explicit sizes but still honour tap area */
+.btn-xs { min-height: 36px; min-width: 36px; }
+
+/* All buttons always pointer on touch devices */
+@media (pointer: coarse) {
+  .btn,
+  .filter-btn,
+  .nav-toggle,
+  .theme-toggle,
+  .nav-icon-btn,
+  .back-to-top,
+  .modal-close,
+  .project-link-btn,
+  .read-more-btn,
+  .filter-btn {
+    cursor: pointer;
+  }
+
+  /* Disable hover transforms on touch — use :active instead */
+  .btn:hover          { transform: none; box-shadow: none; }
+  .btn:active         { transform: scale(0.97); opacity: 0.9; }
+  .btn-primary:active { box-shadow: 0 4px 20px rgba(59,130,246,0.3); }
+  .filter-btn:hover   { transform: none; }
+  .filter-btn:active  { transform: scale(0.96); }
+}
+
+/* =============================================
+   TABLET  ≤ 1024px
+   ============================================= */
+@media (max-width: 1024px) {
+  :root { --section-pad: 80px 0; }
+
+  /* --- Nav resume button slightly smaller --- */
+  .nav-actions .btn-sm {
+    padding: 8px 14px;
+    font-size: 0.82rem;
+  }
+
+  /* --- Hero buttons wrap to two per row --- */
+  .hero-buttons {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  /* --- Filter buttons shrink slightly --- */
+  .filter-btn {
+    padding: 9px 18px;
+    font-size: 0.85rem;
+  }
+
+  /* --- Footer CTA buttons --- */
+  .footer-cta-btns { gap: 12px; }
+
+  /* Layout */
+  .hero-container { gap: 36px; }
+  .hero-stats { grid-template-columns: repeat(2,1fr); }
+  .about-grid { grid-template-columns: 1fr; gap: 40px; }
+  .about-image-col { max-width: 400px; margin: 0 auto; }
+  .about-photo-frame { max-width: 280px; margin: 0 auto; }
+  .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+  .footer-brand { grid-column: 1 / -1; }
+  .github-profile-card { flex-direction: column; text-align: center; }
+  .github-stats { justify-content: center; }
+  .htimeline-item { width: 120px; }
+}
+
+/* =============================================
+   MOBILE  ≤ 768px
+   ============================================= */
+@media (max-width: 768px) {
+  :root { --section-pad: 60px 0; }
+  .container { padding: 0 18px; }
+
+  /* ---- Navbar ---- */
+  .nav-menu {
+    position: fixed;
+    top: 70px; left: 0; right: 0;
+    background: var(--nav-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: 8px 0;
+    z-index: 999;
+    transform: translateY(-8px);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+    max-height: calc(100vh - 70px);
+    overflow-y: auto;
+  }
+  .nav-menu.open {
+    opacity: 1; visibility: visible; transform: translateY(0);
+  }
+  .nav-link {
+    padding: 16px 24px;          /* bigger tap area */
+    border-radius: 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 1rem;
+    min-height: 52px;            /* generous touch target */
+    display: flex;
+    align-items: center;
+  }
+  .nav-link::after { display: none; }
+
+  /* Hamburger button */
+  .nav-toggle {
+    display: flex;
+    width: 44px; height: 44px;   /* 44px touch target */
+  }
+  .nav-actions { gap: 8px; }
+
+  /* Hide text resume button; keep icon buttons visible */
+  .nav-actions .btn-sm { display: none; }
+
+  /* Icon buttons in nav – minimum touch target */
+  .nav-icon-btn,
+  .theme-toggle {
+    width: 44px; height: 44px;
+    border-radius: 10px;
+  }
+
+  /* ---- Hero ---- */
+  .hero { padding: 90px 18px 60px; }
+  .hero-container {
+    grid-template-columns: 1fr;
+    gap: 36px;
+    text-align: center;
+  }
+  .hero-right { order: -1; }
+  .hero-illustration { max-width: 300px; margin: 0 auto; }
+  .hero-description { margin: 0 auto 28px; max-width: 100%; }
+
+  /* Hero buttons — stacked, full-width, easy to tap */
+  .hero-buttons {
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+  .hero-buttons .btn {
+    width: 100%;
+    max-width: 300px;
+    justify-content: center;
+    min-height: 52px;            /* comfortable tap height */
+    font-size: 0.95rem;
+  }
+
+  .hero-stats {
+    grid-template-columns: repeat(2,1fr);
+    gap: 12px; padding: 0 18px; margin-top: 40px;
+  }
+  .stat-number { font-size: 2rem; }
+  .float-icon { width: 34px; height: 34px; font-size: 0.9rem; border-radius: 10px; }
+
+  /* ---- Project filter buttons — scrollable row ---- */
+  .project-filters {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    justify-content: flex-start;
+    gap: 8px;
+    padding-bottom: 8px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .project-filters::-webkit-scrollbar { display: none; }
+  .filter-btn {
+    padding: 10px 18px;
+    font-size: 0.82rem;
+    white-space: nowrap;
+    flex-shrink: 0;
+    min-height: 44px;
+  }
+
+  /* ---- Project card action buttons ---- */
+  .project-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .project-actions .btn-xs {
+    flex: 1;
+    justify-content: center;
+    min-height: 40px;
+    font-size: 0.82rem;
+    padding: 10px 14px;
+  }
+
+  /* ---- GitHub profile button ---- */
+  .github-info .btn {
+    width: 100%;
+    justify-content: center;
+    min-height: 50px;
+  }
+
+  /* ---- Contact form submit ---- */
+  #submitBtn {
+    min-height: 52px;
+    font-size: 1rem;
+  }
+
+  /* ---- Footer CTA buttons — stacked ---- */
+  .footer-cta-btns {
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+  .footer-cta-btns .btn {
+    width: 100%;
+    max-width: 280px;
+    justify-content: center;
+    min-height: 52px;
+  }
+
+  /* ---- Back to top ---- */
+  .back-to-top {
+    bottom: 18px; right: 18px;
+    width: 48px; height: 48px;  /* easy to tap */
+    font-size: 0.95rem;
+  }
+
+  /* ---- Modal close ---- */
+  .modal-close {
+    width: 44px; height: 44px;
+    top: 12px; right: 12px;
+  }
+  .modal-box { padding: 24px 18px; max-height: 90vh; }
+  .modal-overlay { padding: 12px; }
+
+  /* ---- About ---- */
+  .about-grid { grid-template-columns: 1fr; gap: 32px; }
+  .about-image-col { max-width: 100%; }
+  .about-photo-frame { max-width: 220px; }
+  .about-badge { display: none; }
+  .quick-facts { margin-top: 20px; }
+  .about-info-grid { grid-template-columns: 1fr 1fr; }
+
+  /* ---- Journey ---- */
+  .htimeline-track {
+    flex-direction: column;
+    align-items: flex-start;
+    min-width: unset;
+    gap: 0;
+    padding: 16px 8px;
+  }
+  .htimeline-item {
+    flex-direction: row;
+    width: 100%;
+    text-align: left;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 12px 0;
+  }
+  .htimeline-dot { flex-shrink: 0; width: 44px; height: 44px; font-size: 1rem; }
+  .htimeline-content { margin-top: 0; padding: 0; }
+  .htimeline-connector {
+    width: 2px; height: 28px; min-width: unset;
+    margin: 0 0 0 21px;
+    background: linear-gradient(180deg, var(--accent-blue), var(--accent-purple));
+    flex: unset;
+  }
+  .htimeline-content h4 { font-size: 0.9rem; }
+  .htimeline-content p  { font-size: 0.8rem; }
+
+  /* ---- Skills ---- */
+  .skills-grid { grid-template-columns: 1fr; }
+
+  /* ---- Projects ---- */
+  .projects-grid { grid-template-columns: 1fr; }
+
+  /* ---- Education ---- */
+  .edu-card { flex-direction: column; gap: 12px; }
+  .edu-timeline { max-width: 100%; }
+
+  /* ---- Experience ---- */
+  .work-exp-header { gap: 12px; }
+  .exp-grid { grid-template-columns: 1fr; }
+
+  /* ---- Certs ---- */
+  .certs-grid { grid-template-columns: 1fr; }
+
+  /* ---- GitHub ---- */
+  .github-profile-card { padding: 20px; flex-direction: column; text-align: center; gap: 20px; }
+  .github-stats { gap: 16px; justify-content: center; }
+
+  /* ---- Achievements ---- */
+  .ach-grid { grid-template-columns: 1fr 1fr; }
+
+  /* ---- Testimonials ---- */
+  .testimonials-grid { grid-template-columns: 1fr; }
+
+  /* ---- Contact ---- */
+  .contact-grid { grid-template-columns: 1fr; gap: 32px; }
+  .contact-form { padding: 24px 18px; }
+
+  /* ---- Footer ---- */
+  .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+  .footer-cta h3 { font-size: 1.3rem; }
+
+  /* ---- Section titles ---- */
+  .section-title { font-size: 1.8rem; }
+  .section-header { margin-bottom: 40px; }
+}
+
+/* =============================================
+   SMALL MOBILE  ≤ 480px
+   ============================================= */
+@media (max-width: 480px) {
+  .container { padding: 0 14px; }
+
+  /* ---- All standard buttons ---- */
+  .btn {
+    padding: 13px 20px;
+    font-size: 0.9rem;
+    min-height: 48px;
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Override full-width for inline buttons (card actions) */
+  .project-actions .btn,
+  .exp-tags .btn,
+  .modal-body .btn {
+    width: auto;
+  }
+
+  .btn-sm {
+    padding: 10px 16px;
+    font-size: 0.84rem;
+    min-height: 44px;
+    width: auto;
+  }
+  .btn-xs {
+    padding: 9px 14px;
+    font-size: 0.8rem;
+    min-height: 40px;
+    flex: 1;
+    justify-content: center;
+  }
+
+  /* ---- Filter buttons — scrollable pill row ---- */
+  .filter-btn {
+    padding: 10px 16px;
+    font-size: 0.8rem;
+    min-height: 42px;
+  }
+
+  /* ---- Nav icon buttons ---- */
+  .nav-icon-btn,
+  .theme-toggle {
+    width: 44px; height: 44px;
+  }
+
+  /* ---- Hero ---- */
+  .hero-name { font-size: 2.2rem; }
+  .hero-description { font-size: 0.9rem; }
+  .hero-buttons .btn { max-width: 100%; min-height: 52px; }
+  .hero-stats { grid-template-columns: 1fr 1fr; gap: 10px; padding: 0 14px; }
+  .stat-number { font-size: 1.8rem; }
+  .stat-label  { font-size: 0.78rem; }
+  .stat-card   { padding: 16px 10px; }
+
+  .screen-code { font-size: 0.75rem; padding: 16px 18px; line-height: 1.8; }
+
+  /* ---- About ---- */
+  .about-info-grid { grid-template-columns: 1fr; }
+
+  /* ---- Achievements ---- */
+  .ach-grid { grid-template-columns: 1fr; }
+
+  /* ---- GitHub ---- */
+  .github-repos-grid { grid-template-columns: 1fr; }
+  .github-info .btn { min-height: 52px; }
+
+  /* ---- Contact submit ---- */
+  #submitBtn { min-height: 54px; font-size: 1rem; }
+
+  /* ---- Footer ---- */
+  .footer-cta { padding: 40px 0 28px; }
+  .footer-cta-btns .btn { max-width: 100%; min-height: 52px; }
+
+  /* ---- Back to top ---- */
+  .back-to-top { width: 50px; height: 50px; bottom: 16px; right: 16px; }
+
+  /* ---- Modal ---- */
+  .modal-close { width: 44px; height: 44px; }
+
+  /* ---- Section ---- */
+  .section-title { font-size: 1.6rem; }
+
+  /* ---- Work exp ---- */
+  .work-exp-icon { width: 44px; height: 44px; font-size: 1.1rem; }
+
+  /* ---- Timeline ---- */
+  .htimeline-dot { width: 38px; height: 38px; font-size: 0.9rem; }
+}
+
+/* =============================================
+   VERY SMALL  ≤ 360px  (e.g. Galaxy A series)
+   ============================================= */
+@media (max-width: 360px) {
+  .btn { padding: 12px 16px; font-size: 0.86rem; }
+  .btn-xs { padding: 8px 12px; font-size: 0.78rem; }
+  .filter-btn { padding: 9px 13px; font-size: 0.77rem; }
+  .hero-name { font-size: 2rem; }
+  .nav-link { font-size: 0.95rem; padding: 14px 20px; }
+}
+
+/* =============================================
+   PREFERS REDUCED MOTION
+   ============================================= */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .hero-left, .hero-right { animation: none; opacity: 1; transform: none; }
+  .reveal-up, .reveal-left, .reveal-right { opacity: 1; transform: none; }
+  #particleCanvas { display: none; }
+
+  /* Instant button feedback with no animation */
+  .btn:active { opacity: 0.85; }
+}
+
+/* =============================================
+   LANDSCAPE PHONE  (short viewport)
+   ============================================= */
+@media (max-height: 500px) and (orientation: landscape) {
+  .hero { min-height: auto; padding: 80px 18px 40px; }
+  .hero-container { gap: 24px; }
+  .scroll-indicator { display: none; }
+  .hero-stats { grid-template-columns: repeat(4,1fr); margin-top: 24px; }
+
+  /* Slim buttons to conserve vertical space */
+  .hero-buttons .btn { min-height: 44px; padding: 10px 20px; }
+  .hero-buttons { flex-direction: row; flex-wrap: wrap; justify-content: center; }
+}

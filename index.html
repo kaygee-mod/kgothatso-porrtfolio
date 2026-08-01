@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Kgothatso Modise — Aspiring Software Engineer. Python, C#, Web Development, Cybersecurity. Belgium Campus iTversity." />
+  <meta name="author" content="Kgothatso Modise" />
+  <title>Kgothatso Modise | Software Developer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+</head>
+<body>
+
+<!-- Custom Cursor -->
+<div class="cursor" id="cursor" aria-hidden="true"></div>
+<div class="cursor-follower" id="cursorFollower" aria-hidden="true"></div>
+
+<!-- Loading Screen -->
+<div class="loading-screen" id="loadingScreen" role="status" aria-label="Loading portfolio">
+  <div class="loading-content">
+    <div class="loading-logo">KM</div>
+    <p class="loading-text">Loading Portfolio<span class="loading-dots"><span>.</span><span>.</span><span>.</span></span></p>
+    <div class="loading-bar"><div class="loading-bar-fill"></div></div>
+  </div>
+</div>
+
+<!-- Particle Canvas -->
+<canvas id="particleCanvas" aria-hidden="true"></canvas>
+
+<!-- ===== NAVBAR ===== -->
+<nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
+  <div class="nav-container">
+    <a href="#home" class="nav-logo" aria-label="Home">
+      <span class="logo-text">KM</span><span class="logo-dot"></span>
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navMenu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-menu" id="navMenu" role="menubar">
+      <li><a href="#home"           class="nav-link active" role="menuitem">Home</a></li>
+      <li><a href="#about"          class="nav-link" role="menuitem">About</a></li>
+      <li><a href="#journey"        class="nav-link" role="menuitem">Journey</a></li>
+      <li><a href="#skills"         class="nav-link" role="menuitem">Skills</a></li>
+      <li><a href="#projects"       class="nav-link" role="menuitem">Projects</a></li>
+      <li><a href="#education"      class="nav-link" role="menuitem">Education</a></li>
+      <li><a href="#experience"     class="nav-link" role="menuitem">Experience</a></li>
+      <li><a href="#certifications" class="nav-link" role="menuitem">Certifications</a></li>
+      <li><a href="#github-section" class="nav-link" role="menuitem">GitHub</a></li>
+      <li><a href="#contact"        class="nav-link" role="menuitem">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="https://github.com/KgothatsoModise" target="_blank" rel="noopener noreferrer" class="nav-icon-btn" aria-label="GitHub Profile"><i class="fab fa-github"></i></a>
+      <a href="https://www.linkedin.com/in/kgothatso-modise" target="_blank" rel="noopener noreferrer" class="nav-icon-btn" aria-label="LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
+      <a href="assets/Kgothatso_Modise_CV.pdf" download class="btn btn-primary btn-sm"><i class="fas fa-download"></i> Resume</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle colour theme"><i class="fas fa-sun" id="themeIcon"></i></button>
+    </div>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section id="home" class="hero" aria-label="Hero section">
+  <div class="hero-radial" aria-hidden="true"></div>
+  <div class="hero-container">
+    <div class="hero-left reveal-left">
+      <p class="hero-greeting">Hello, I'm</p>
+      <h1 class="hero-name">Kgothatso<br><span class="accent-gradient">Modise</span></h1>
+      <div class="hero-title-wrapper">
+        <span class="hero-title-static">I'm a </span>
+        <span class="hero-typed" id="typedText" aria-live="polite"></span><span class="typed-cursor" aria-hidden="true">|</span>
+      </div>
+      <p class="hero-description">
+        Aspiring Software Engineer With a passion for technology, problem solving, and continuous learning. I have developed strong technical skills through my Diploma in IT at Belgium Campus iTversity — building real-world projects using Python, C#, SQL, HTML, CSS and JavaScript. I enjoy transforming ideas into functional software and I believe technology has the power to solve real-world problems.
+      </p>
+      <div class="hero-buttons">
+        <a href="#projects" class="btn btn-primary ripple"><i class="fas fa-code"></i> View My Projects</a>
+        <a href="assets/Kgothatso_Modise_CV.pdf" download class="btn btn-outline ripple"><i class="fas fa-download"></i> Download CV</a>
+        <a href="#contact" class="btn btn-ghost ripple"><i class="fas fa-envelope"></i> Contact Me</a>
+      </div>
+    </div>
+    <div class="hero-right reveal-right">
+      <div class="hero-illustration">
+        <div class="illustration-glow" aria-hidden="true"></div>
+        <div class="illustration-screen">
+          <div class="screen-bar"><span></span><span></span><span></span></div>
+          <div class="screen-code" aria-label="Code snippet illustration">
+            <p><span class="c-keyword">def</span> <span class="c-fn">build_future</span>():</p>
+            <p>&nbsp;&nbsp;<span class="c-keyword">while</span> <span class="c-bool">True</span>:</p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;learn(<span class="c-str">"something new"</span>)</p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;build(<span class="c-str">"something great"</span>)</p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;solve(<span class="c-str">"hard problems"</span>)</p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;<span class="c-keyword">if</span> stuck: ask_why()</p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;<span class="c-comment"># never stop growing</span></p>
+          </div>
+        </div>
+        <div class="floating-icons" aria-hidden="true">
+          <span class="float-icon" style="--d:0s;--x:-80px;--y:-60px" title="Python"><i class="fab fa-python"></i></span>
+          <span class="float-icon" style="--d:0.4s;--x:80px;--y:-50px" title="GitHub"><i class="fab fa-github"></i></span>
+          <span class="float-icon" style="--d:0.8s;--x:-90px;--y:60px" title="HTML5"><i class="fab fa-html5"></i></span>
+          <span class="float-icon" style="--d:1.2s;--x:90px;--y:70px" title="CSS3"><i class="fab fa-css3-alt"></i></span>
+          <span class="float-icon" style="--d:1.6s;--x:0px;--y:-100px" title="JavaScript"><i class="fab fa-js"></i></span>
+          <span class="float-icon" style="--d:2.0s;--x:-110px;--y:10px" title="Database"><i class="fas fa-database"></i></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stats -->
+  <div class="hero-stats" aria-label="Key statistics">
+    <div class="stat-card reveal-up" style="--delay:0.1s">
+      <span class="stat-number" data-target="6">0</span><span class="stat-suffix">+</span>
+      <p class="stat-label">Projects Completed</p>
+    </div>
+    <div class="stat-card reveal-up" style="--delay:0.2s">
+      <span class="stat-number" data-target="3">0</span><span class="stat-suffix">+</span>
+      <p class="stat-label">Certifications</p>
+    </div>
+    <div class="stat-card reveal-up" style="--delay:0.3s">
+      <span class="stat-number" data-target="6">0</span><span class="stat-suffix">+</span>
+      <p class="stat-label">Languages</p>
+    </div>
+    <div class="stat-card reveal-up" style="--delay:0.4s">
+      <span class="stat-number" data-target="10">0</span><span class="stat-suffix">+</span>
+      <p class="stat-label">GitHub Repos</p>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="scroll-indicator" aria-label="Scroll down">
+    <div class="scroll-mouse"><div class="scroll-wheel"></div></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- ===== ABOUT ===== -->
+<section id="about" class="section about" aria-labelledby="about-heading">
+  <div class="container">
+    <div class="section-header">
+      <p class="section-tag reveal-up">Get to know me</p>
+      <h2 class="section-title reveal-up" id="about-heading">About <span class="accent-gradient">Me</span></h2>
+      <div class="section-line reveal-up"></div>
+    </div>
+    <div class="about-grid">
+      <div class="about-image-col reveal-left">
+        <div class="about-photo-frame">
+          <div class="about-photo-placeholder" aria-label="Profile photo">
+            <i class="fas fa-user-circle" aria-hidden="true"></i>
+            <p>Kgothatso Modise</p>
+          </div>
+          <div class="about-photo-glow" aria-hidden="true"></div>
+          <div class="about-badge about-badge-1"><i class="fab fa-python"></i> Python</div>
+          <div class="about-badge about-badge-2"><i class="fas fa-shield-alt"></i> Security</div>
+          <div class="about-badge about-badge-3"><i class="fas fa-code"></i> C#</div>
+        </div>
+
+        <!-- Quick Facts Glass Cards -->
+        <div class="quick-facts" aria-label="Quick facts">
+          <div class="fact-card glass-card reveal-up" style="--delay:0.1s">
+            <span class="fact-icon">📍</span>
+            <div><span class="fact-label">Location</span><span class="fact-value">Kempton Park, Gauteng</span></div>
+          </div>
+          <div class="fact-card glass-card reveal-up" style="--delay:0.2s">
+            <span class="fact-icon">🎓</span>
+            <div><span class="fact-label">Institution</span><span class="fact-value">Belgium Campus iTversity</span></div>
+          </div>
+          <div class="fact-card glass-card reveal-up" style="--delay:0.3s">
+            <span class="fact-icon">💻</span>
+            <div><span class="fact-label">Qualification</span><span class="fact-value">Diploma in IT (NQF 6)</span></div>
+          </div>
+          <div class="fact-card glass-card reveal-up" style="--delay:0.4s">
+            <span class="fact-icon">🚗</span>
+            <div><span class="fact-label">Driver's Licence</span><span class="fact-value">Code C1</span></div>
+          </div>
+          <div class="fact-card glass-card reveal-up" style="--delay:0.5s">
+            <span class="fact-icon">🌍</span>
+            <div><span class="fact-label">Languages</span><span class="fact-value">English · Setswana · Afrikaans</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-content reveal-right">
+        <h3 class="about-subtitle">Aspiring Software Engineer &amp; <span class="accent-gradient">IT Student</span></h3>
+        <p class="about-text">
+          Hello! I'm Kgothatso Modise, an aspiring Software Engineer with a passion for technology, problem solving, and continuous learning.
+        </p>
+        <p class="about-text">
+          I have developed strong technical skills through my Diploma in Information Technology at Belgium Campus iTversity, where I gained practical experience in software development, web development, databases, cybersecurity, and systems analysis.
+        </p>
+        <p class="about-text">
+          Throughout my academic journey I have built multiple projects using Python, C#, SQL, HTML, CSS, and JavaScript while continually expanding my knowledge through certifications, personal learning, and practical development.
+        </p>
+        <p class="about-text">
+          I enjoy transforming ideas into functional software and I believe technology has the power to solve real-world problems. I am eager to begin my professional career where I can contribute, learn from experienced developers, and grow into an exceptional software engineer.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== JOURNEY (horizontal timeline) ===== -->
+<section id="journey" class="section journey" aria-labelledby="journey-heading">
+  <div class="container">
+    <div class="section-header">
+      <p class="section-tag reveal-up">My story so far</p>
+      <h2 class="section-title reveal-up" id="journey-heading">My Development <span class="accent-gradient">Journey</span></h2>
+      <div class="section-line reveal-up"></div>
+    </div>
+
+    <div class="htimeline reveal-up">
+      <div class="htimeline-track" aria-label="Development journey milestones">
+
+        <div class="htimeline-item">
+          <div class="htimeline-dot htimeline-dot--done"><i class="fas fa-graduation-cap"></i></div>
+          <div class="htimeline-content">
+            <span class="htimeline-year">2024</span>
+            <h4>Matric</h4>
+            <p>National Senior Certificate — Birchleigh High School</p>
+          </div>
+        </div>
+
+        <div class="htimeline-connector" aria-hidden="true"></div>
+
+        <div class="htimeline-item">
+          <div class="htimeline-dot htimeline-dot--done"><i class="fas fa-laptop-code"></i></div>
+          <div class="htimeline-content">
+            <span class="htimeline-year">2024</span>
+            <h4>Belgium Campus</h4>
+            <p>Enrolled in Diploma in Information Technology</p>
+          </div>
+        </div>
+
+        <div class="htimeline-connector" aria-hidden="true"></div>
+
+        <div class="htimeline-item">
+          <div class="htimeline-dot htimeline-dot--done"><i class="fab fa-python"></i></div>
+          <div class="htimeline-content">
+            <span class="htimeline-year">2024</span>
+            <h4>FNB Academy</h4>
+            <p>Completed FNB App Academy Python Masterclass</p>
+          </div>
+        </div>
+
+        <div class="htimeline-connector" aria-hidden="true"></div>
+
+        <div class="htimeline-item">
+          <div class="htimeline-dot htimeline-dot--done"><i class="fas fa-code"></i></div>
+          <div class="htimeline-content">
+            <span class="htimeline-year">2024–25</span>
+            <h4>Python Projects</h4>
+            <p>Built cybersecurity tools, calculators &amp; web apps</p>
+          </div>
+        </div>
+
+        <div class="htimeline-connector" aria-hidden="true"></div>
+
+        <div class="htimeline-item">
+          <div class="htimeline-dot htimeline-dot--done"><i class="fas fa-globe"></i></div>
+          <div class="htimeline-content">
+            <span class="htimeline-year">2025</span>
+            <h4>Web Development</h4>
+            <p>HTML, CSS, JavaScript — interactive web applications</p>
+          </div>
+        </div>
+
+        <div class="htimeline-connector" aria-hidden="true"></div>
+
+        <div class="htimeline-item">
+          <div class="htimeline-dot htimeline-dot--done"><i class="fas fa-store"></i></div>
+          <div class="htimeline-content">
+            <span class="htimeline-year">2026</span>
+            <h4>The Crazy Store</h4>
+            <p>Cashier — professional work experience &amp; soft skills</p>
+          </div>
+        </div>
+
+        <div class="htimeline-connector" aria-hidden="true"></div>
+
+        <div class="htimeline-item">
+          <div class="htimeline-dot htimeline-dot--active"><i class="fas fa-briefcase"></i></div>
+          <div class="htimeline-content">
+            <span class="htimeline-year">Goal</span>
+            <h4>Internship</h4>
+            <p>Seeking a junior software engineering internship</p>
+          </div>
+        </div>
+
+        <div class="htimeline-connector" aria-hidden="true"></div>
+
+        <div class="htimeline-item">
+          <div class="htimeline-dot htimeline-dot--future"><i class="fas fa-rocket"></i></div>
+          <div class="htimeline-content">
+            <span class="htimeline-year">Future</span>
+            <h4>Software Engineer</h4>
+            <p>Full-stack developer &amp; cybersecurity specialist</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SKILLS ===== -->
+<section id="skills" class="section skills" aria-labelledby="skills-heading">
+  <div class="container">
+    <div class="section-header">
+      <p class="section-tag reveal-up">What I work with</p>
+      <h2 class="section-title reveal-up" id="skills-heading">My <span class="accent-gradient">Skills</span></h2>
+      <div class="section-line reveal-up"></div>
+    </div>
+    <div class="skills-grid">
+
+      <!-- Programming Languages -->
+      <div class="skill-category-card glass-card reveal-up" style="--delay:0.1s">
+        <div class="skill-cat-header"><i class="fas fa-code"></i><h3>Programming Languages</h3></div>
+        <div class="skill-items">
+          <div class="skill-item"><div class="skill-meta"><span>Python</span><span>90%</span></div><div class="skill-bar"><div class="skill-fill" data-width="90" style="--accent:#3B82F6"></div></div></div>
+          <div class="skill-item"><div class="skill-meta"><span>C#</span><span>75%</span></div><div class="skill-bar"><div class="skill-fill" data-width="75" style="--accent:#8B5CF6"></div></div></div>
+          <div class="skill-item"><div class="skill-meta"><span>SQL</span><span>80%</span></div><div class="skill-bar"><div class="skill-fill" data-width="80" style="--accent:#22C55E"></div></div></div>
+          <div class="skill-item"><div class="skill-meta"><span>HTML5</span><span>88%</span></div><div class="skill-bar"><div class="skill-fill" data-width="88" style="--accent:#F97316"></div></div></div>
+          <div class="skill-item"><div class="skill-meta"><span>CSS3</span><span>85%</span></div><div class="skill-bar"><div class="skill-fill" data-width="85" style="--accent:#06B6D4"></div></div></div>
+          <div class="skill-item"><div class="skill-meta"><span>JavaScript</span><span>72%</span></div><div class="skill-bar"><div class="skill-fill" data-width="72" style="--accent:#F59E0B"></div></div></div>
+        </div>
+      </div>
+
+      <!-- Web Development -->
+      <div class="skill-category-card glass-card reveal-up" style="--delay:0.2s">
+        <div class="skill-cat-header"><i class="fas fa-globe"></i><h3>Web Development</h3></div>
+        <div class="skill-items">
+          <div class="skill-item"><div class="skill-meta"><span>Responsive Design</span><span>85%</span></div><div class="skill-bar"><div class="skill-fill" data-width="85" style="--accent:#3B82F6"></div></div></div>
+          <div class="skill-item"><div class="skill-meta"><span>DOM Manipulation</span><span>78%</span></div><div class="skill-bar"><div class="skill-fill" data-width="78" style="--accent:#8B5CF6"></div></div></div>
+          <div class="skill-item"><div class="skill-meta"><span>Bootstrap</span><span>75%</span></div><div class="skill-bar"><div class="skill-fill" data-width="75" style="--accent:#06B6D4"></div></div></div>
+          <div class="skill-item"><div class="skill-meta"><span>UI Development</span><span>80%</span></div><div class="skill-bar"><div class="skill-fill" data-width="80" style="--accent:#22C55E"></div></div></div>
+        </div>
+      </div>
+
+      <!-- Database -->
+      <div class="skill-category-card glass-card reveal-up" style="--delay:0.3s">
+        <div class="skill-cat-header"><i class="fas fa-database"></i><h3>Database</h3></div>
+        <div class="skill-items">
+          <div class="skill-item"><div class="skill-meta"><span>SQL Server</span><span>80%</span></div><div class="skill-bar"><div class="skill-fill" data-width="80" style="--accent:#3B82F6"></div></div></div>
+          <div class="skill-item"><div class="skill-meta"><span>Database Design</span><span>78%</span></div><div class="skill-bar"><div class="skill-fill" data-width="78" style="--accent:#8B5CF6"></div></div></div>
+          <div class="skill-item"><div class="skill-meta"><span>Normalization</span><span>72%</span></div><div class="skill-bar"><div class="skill-fill" data-width="72" style="--accent:#06B6D4"></div></div></div>
+          <div class="skill-item"><div class="skill-meta"><span>Queries &amp; ER Diagrams</span><span>75%</span></div><div class="skill-bar"><div class="skill-fill" data-width="75" style="--accent:#22C55E"></div></div></div>
+        </div>
+      </div>
+
+      <!-- Cybersecurity -->
+      <div class="skill-category-card glass-card reveal-up" style="--delay:0.4s">
+        <div class="skill-cat-header"><i class="fas fa-shield-alt"></i><h3>Cybersecurity</h3></div>
+        <div class="skill-tags">
+          <span class="skill-tag"><i class="fas fa-key"></i> Password Security</span>
+          <span class="skill-tag"><i class="fas fa-lock"></i> Encryption</span>
+          <span class="skill-tag"><i class="fas fa-code"></i> Secure Programming</span>
+          <span class="skill-tag"><i class="fas fa-shield-alt"></i> Cybersecurity Fundamentals</span>
+          <span class="skill-tag"><i class="fas fa-file-lock"></i> File Encryption</span>
+        </div>
+      </div>
+
+      <!-- Software Development -->
+      <div class="skill-category-card glass-card reveal-up" style="--delay:0.5s">
+        <div class="skill-cat-header"><i class="fas fa-laptop-code"></i><h3>Software Development</h3></div>
+        <div class="skill-items">
+          <div class="skill-item"><div class="skill-meta"><span>Git &amp; GitHub</span><span>85%</span></div><div class="skill-bar"><div class="skill-fill" data-width="85" style="--accent:#3B82F6"></div></div></div>
+          <div class="skill-item"><div class="skill-meta"><span>OOP</span><span>82%</span></div><div class="skill-bar"><div class="skill-fill" data-width="82" style="--accent:#8B5CF6"></div></div></div>
+          <div class="skill-item"><div class="skill-meta"><span>Algorithms</span><span>75%</span></div><div class="skill-bar"><div class="skill-fill" data-width="75" style="--accent:#06B6D4"></div></div></div>
+          <div class="skill-item"><div class="skill-meta"><span>Systems Analysis</span><span>70%</span></div><div class="skill-bar"><div class="skill-fill" data-width="70" style="--accent:#22C55E"></div></div></div>
+        </div>
+      </div>
+
+      <!-- Professional Skills -->
+      <div class="skill-category-card glass-card reveal-up" style="--delay:0.6s">
+        <div class="skill-cat-header"><i class="fas fa-star"></i><h3>Professional Skills</h3></div>
+        <div class="skill-tags">
+          <span class="skill-tag">Problem Solving</span>
+          <span class="skill-tag">Analytical Thinking</span>
+          <span class="skill-tag">Communication</span>
+          <span class="skill-tag">Leadership</span>
+          <span class="skill-tag">Attention to Detail</span>
+          <span class="skill-tag">Team Collaboration</span>
+          <span class="skill-tag">Time Management</span>
+          <span class="skill-tag">Organisation</span>
+          <span class="skill-tag">Adaptability</span>
+          <span class="skill-tag">Presentation Skills</span>
+          <span class="skill-tag">Report Writing</span>
+          <span class="skill-tag">Decision Making</span>
+          <span class="skill-tag">Customer Service</span>
+          <span class="skill-tag">Fast Learner</span>
+          <span class="skill-tag">Working Under Pressure</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== PROJECTS ===== -->
+<section id="projects" class="section projects" aria-labelledby="projects-heading">
+  <div class="container">
+    <div class="section-header">
+      <p class="section-tag reveal-up">What I've built</p>
+      <h2 class="section-title reveal-up" id="projects-heading">Featured <span class="accent-gradient">Projects</span></h2>
+      <div class="section-line reveal-up"></div>
+    </div>
+
+    <div class="project-filters reveal-up" role="group" aria-label="Filter projects">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="python">Python</button>
+      <button class="filter-btn" data-filter="web">Web Dev</button>
+      <button class="filter-btn" data-filter="security">Security</button>
+    </div>
+
+    <div class="projects-grid">
+      <article class="project-card glass-card reveal-up" data-category="python security" style="--delay:0.1s">
+        <div class="project-image">
+          <div class="project-img-placeholder security-bg" aria-hidden="true"><i class="fas fa-shield-alt"></i></div>
+          <div class="project-overlay">
+            <a href="https://github.com/KgothatsoModise" target="_blank" rel="noopener noreferrer" class="project-link-btn" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <button class="project-link-btn read-more-btn" data-project="cyber" aria-label="Read more"><i class="fas fa-expand-alt"></i></button>
+          </div>
+        </div>
+        <div class="project-body">
+          <div class="project-tags"><span class="tag tag-python">Python</span><span class="tag tag-security">Security</span></div>
+          <h3 class="project-title">Cybersecurity Mini Projects</h3>
+          <p class="project-desc">Password generator, strength checker, and file encryption tool demonstrating cybersecurity and Python fundamentals.</p>
+          <div class="project-tech"><span>Python</span><span>Cryptography</span><span>File I/O</span></div>
+          <div class="project-actions">
+            <a href="https://github.com/KgothatsoModise" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-xs ripple"><i class="fab fa-github"></i> GitHub</a>
+            <button class="btn btn-primary btn-xs ripple read-more-btn" data-project="cyber">Read More</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="project-card glass-card reveal-up" data-category="python" style="--delay:0.2s">
+        <div class="project-image">
+          <div class="project-img-placeholder python-bg" aria-hidden="true"><i class="fab fa-python"></i></div>
+          <div class="project-overlay">
+            <a href="https://github.com/KgothatsoModise" target="_blank" rel="noopener noreferrer" class="project-link-btn" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <button class="project-link-btn read-more-btn" data-project="pyfund" aria-label="Read more"><i class="fas fa-expand-alt"></i></button>
+          </div>
+        </div>
+        <div class="project-body">
+          <div class="project-tags"><span class="tag tag-python">Python</span><span class="tag tag-fnb">FNB Academy</span></div>
+          <h3 class="project-title">Python Fundamentals Projects</h3>
+          <p class="project-desc">FNB App Academy projects — username generator, petrol cost calculator, and tip calculator.</p>
+          <div class="project-tech"><span>Python</span><span>Logic</span><span>Maths</span></div>
+          <div class="project-actions">
+            <a href="https://github.com/KgothatsoModise" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-xs ripple"><i class="fab fa-github"></i> GitHub</a>
+            <button class="btn btn-primary btn-xs ripple read-more-btn" data-project="pyfund">Read More</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="project-card glass-card reveal-up" data-category="web" style="--delay:0.3s">
+        <div class="project-image">
+          <div class="project-img-placeholder web-bg" aria-hidden="true"><i class="fas fa-globe"></i></div>
+          <div class="project-overlay">
+            <a href="https://github.com/KgothatsoModise" target="_blank" rel="noopener noreferrer" class="project-link-btn" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <button class="project-link-btn read-more-btn" data-project="foods" aria-label="Read more"><i class="fas fa-expand-alt"></i></button>
+          </div>
+        </div>
+        <div class="project-body">
+          <div class="project-tags"><span class="tag tag-html">HTML</span><span class="tag tag-js">JavaScript</span></div>
+          <h3 class="project-title">WPR261 — Unusual Foods App</h3>
+          <p class="project-desc">Interactive web app exploring unusual foods. Dynamic search, comparisons, favourites list.</p>
+          <div class="project-tech"><span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>DOM</span></div>
+          <div class="project-actions">
+            <a href="https://github.com/KgothatsoModise" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-xs ripple"><i class="fab fa-github"></i> GitHub</a>
+            <button class="btn btn-primary btn-xs ripple read-more-btn" data-project="foods">Read More</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="project-card glass-card reveal-up" data-category="web" style="--delay:0.4s">
+        <div class="project-image">
+          <div class="project-img-placeholder ai-bg" aria-hidden="true"><i class="fas fa-robot"></i></div>
+          <div class="project-overlay">
+            <a href="https://naledi-reed.github.io" target="_blank" rel="noopener noreferrer" class="project-link-btn" aria-label="Live site"><i class="fas fa-external-link-alt"></i></a>
+            <button class="project-link-btn read-more-btn" data-project="lecturer" aria-label="Read more"><i class="fas fa-expand-alt"></i></button>
+          </div>
+        </div>
+        <div class="project-body">
+          <div class="project-tags"><span class="tag tag-html">HTML</span><span class="tag tag-team">Group Project</span></div>
+          <h3 class="project-title">INL261 — Animated Lecturer Portfolio</h3>
+          <p class="project-desc">AI-assisted animated portfolio built as group project and deployed on GitHub Pages.</p>
+          <div class="project-tech"><span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>GitHub Pages</span></div>
+          <div class="project-actions">
+            <a href="https://naledi-reed.github.io" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-xs ripple"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+            <button class="btn btn-primary btn-xs ripple read-more-btn" data-project="lecturer">Read More</button>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PROJECT MODALS ===== -->
+<div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle" hidden>
+  <div class="modal-box glass-card">
+    <button class="modal-close" id="modalClose" aria-label="Close modal"><i class="fas fa-times"></i></button>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+</div>
+
+<!-- ===== EDUCATION ===== -->
+<section id="education" class="section education" aria-labelledby="edu-heading">
+  <div class="container">
+    <div class="section-header">
+      <p class="section-tag reveal-up">Academic Background</p>
+      <h2 class="section-title reveal-up" id="edu-heading">My <span class="accent-gradient">Education</span></h2>
+      <div class="section-line reveal-up"></div>
+    </div>
+    <div class="edu-timeline">
+
+      <div class="edu-card glass-card reveal-up" style="--delay:0.1s">
+        <div class="edu-icon-wrap"><i class="fas fa-school" aria-hidden="true"></i></div>
+        <div class="edu-body">
+          <span class="edu-badge badge-done">Completed · 2024</span>
+          <h3>National Senior Certificate (NQF Level 4)</h3>
+          <p class="edu-institution"><i class="fas fa-university"></i> Birchleigh High School</p>
+          <p class="edu-desc">Successfully completed Matric with a strong academic foundation that inspired my passion for Information Technology. The analytical skills gained here set the stage for my journey into software development.</p>
+        </div>
+      </div>
+
+      <div class="edu-connector" aria-hidden="true"><i class="fas fa-arrow-down"></i></div>
+
+      <div class="edu-card glass-card reveal-up" style="--delay:0.2s">
+        <div class="edu-icon-wrap active-edu"><i class="fas fa-laptop-code" aria-hidden="true"></i></div>
+        <div class="edu-body">
+          <span class="edu-badge badge-current">Expected 2026</span>
+          <h3>Diploma in Information Technology (NQF Level 6)</h3>
+          <p class="edu-institution"><i class="fas fa-university"></i> Belgium Campus iTversity</p>
+          <p class="edu-desc">Comprehensive IT programme delivering practical skills in software development, web technologies, databases, cybersecurity, and systems analysis across multiple programming environments.</p>
+          <div class="edu-modules">
+            <span>Python</span><span>C#</span><span>SQL</span>
+            <span>HTML/CSS/JS</span><span>Cybersecurity</span>
+            <span>Systems Analysis</span><span>OOP</span><span>SDLC</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="edu-connector" aria-hidden="true"><i class="fas fa-arrow-down"></i></div>
+
+      <div class="edu-card glass-card edu-future reveal-up" style="--delay:0.3s">
+        <div class="edu-icon-wrap future-edu"><i class="fas fa-rocket" aria-hidden="true"></i></div>
+        <div class="edu-body">
+          <span class="edu-badge badge-future">Future Goal</span>
+          <h3>Software Engineer &amp; Cybersecurity Specialist</h3>
+          <p class="edu-institution"><i class="fas fa-briefcase"></i> Career Aspiration</p>
+          <p class="edu-desc">Pursuing a career at leading companies such as FNB, BBD, Discovery, Accenture, or Microsoft — building secure, scalable software and specialising in cybersecurity solutions.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== EXPERIENCE ===== -->
+<section id="experience" class="section experience" aria-labelledby="exp-heading">
+  <div class="container">
+    <div class="section-header">
+      <p class="section-tag reveal-up">Professional background</p>
+      <h2 class="section-title reveal-up" id="exp-heading">My <span class="accent-gradient">Experience</span></h2>
+      <div class="section-line reveal-up"></div>
+    </div>
+
+    <!-- Work Experience – featured card -->
+    <div class="work-exp-card glass-card reveal-up" style="--delay:0.1s">
+      <div class="work-exp-header">
+        <div class="work-exp-icon"><i class="fas fa-store" aria-hidden="true"></i></div>
+        <div class="work-exp-meta">
+          <h3>Cashier</h3>
+          <p class="work-exp-org">The Crazy Store</p>
+          <p class="work-exp-period"><i class="fas fa-calendar-alt"></i> 2026 – Present</p>
+        </div>
+        <span class="work-exp-badge">Current</span>
+      </div>
+      <p class="work-exp-desc">Working in a fast-paced retail environment has strengthened my communication, teamwork, and customer service abilities while developing strong organisational and problem-solving skills. Responsibilities include processing customer transactions, assisting customers, merchandising, stock control, inventory management, and ensuring exceptional customer service.</p>
+      <div class="work-exp-skills">
+        <span>Customer Service</span><span>Communication</span><span>Teamwork</span>
+        <span>Attention to Detail</span><span>Working Under Pressure</span>
+        <span>Cash Handling</span><span>Problem Solving</span>
+      </div>
+    </div>
+
+    <!-- Academic / Dev Experience grid -->
+    <div class="exp-grid" style="margin-top:32px">
+      <div class="exp-card glass-card reveal-up" style="--delay:0.2s">
+        <div class="exp-icon"><i class="fas fa-graduation-cap"></i></div>
+        <h3>Academic Projects</h3>
+        <p class="exp-org">Belgium Campus iTversity</p>
+        <p>Practical coursework projects across Python, C#, web development, and database modules.</p>
+        <div class="exp-tags"><span>Python</span><span>C#</span><span>SQL</span><span>HTML/CSS</span></div>
+      </div>
+      <div class="exp-card glass-card reveal-up" style="--delay:0.3s">
+        <div class="exp-icon"><i class="fab fa-python"></i></div>
+        <h3>FNB App Academy</h3>
+        <p class="exp-org">Intensive Masterclass — FNB</p>
+        <p>Two-week Python programming programme building app development and problem-solving skills.</p>
+        <div class="exp-tags"><span>Python</span><span>App Dev</span><span>Problem Solving</span></div>
+      </div>
+      <div class="exp-card glass-card reveal-up" style="--delay:0.4s">
+        <div class="exp-icon"><i class="fas fa-code"></i></div>
+        <h3>Personal Development</h3>
+        <p class="exp-org">Self-Directed Learning</p>
+        <p>Built cybersecurity tools, web apps, and Python utilities — continuously expanding skills independently.</p>
+        <div class="exp-tags"><span>Python</span><span>Cryptography</span><span>JavaScript</span></div>
+      </div>
+      <div class="exp-card glass-card reveal-up" style="--delay:0.5s">
+        <div class="exp-icon"><i class="fab fa-github"></i></div>
+        <h3>GitHub Portfolio</h3>
+        <p class="exp-org">Open Source &amp; Version Control</p>
+        <p>Maintaining a public portfolio of projects using Git for version control and documentation.</p>
+        <div class="exp-tags"><span>Git</span><span>GitHub</span><span>Version Control</span></div>
+      </div>
+      <div class="exp-card glass-card reveal-up" style="--delay:0.6s">
+        <div class="exp-icon"><i class="fas fa-users"></i></div>
+        <h3>Team Collaboration</h3>
+        <p class="exp-org">Belgium Campus — Group Projects</p>
+        <p>Collaborated on the AI-assisted animated lecturer portfolio, practising Git workflows and agile teamwork.</p>
+        <div class="exp-tags"><span>Teamwork</span><span>Git</span><span>Agile</span></div>
+      </div>
+      <div class="exp-card glass-card reveal-up" style="--delay:0.7s">
+        <div class="exp-icon"><i class="fas fa-shield-alt"></i></div>
+        <h3>Cybersecurity Self-Learning</h3>
+        <p class="exp-org">Continuous Learning</p>
+        <p>Studying encryption, password security, ethical hacking fundamentals, and secure programming practices.</p>
+        <div class="exp-tags"><span>Security</span><span>Encryption</span><span>Ethical Hacking</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CERTIFICATIONS ===== -->
+<section id="certifications" class="section certs" aria-labelledby="certs-heading">
+  <div class="container">
+    <div class="section-header">
+      <p class="section-tag reveal-up">Credentials</p>
+      <h2 class="section-title reveal-up" id="certs-heading">My <span class="accent-gradient">Certifications</span></h2>
+      <div class="section-line reveal-up"></div>
+    </div>
+    <div class="certs-grid">
+
+      <div class="cert-card glass-card reveal-up" style="--delay:0.1s">
+        <div class="cert-icon" aria-hidden="true"><i class="fas fa-certificate"></i></div>
+        <div class="cert-body">
+          <div class="cert-badges"><span class="cert-status-badge badge-completed">Completed</span></div>
+          <span class="cert-provider">FNB App Academy</span>
+          <h3 class="cert-title">App Academy Certification Masterclass</h3>
+          <p class="cert-date"><i class="fas fa-calendar-alt"></i> 2024</p>
+          <p class="cert-desc">Intensive two-week Python programming and app development programme — solidified fundamentals, problem-solving, and practical coding skills.</p>
+        </div>
+        <div class="cert-glow" aria-hidden="true"></div>
+      </div>
+
+      <div class="cert-card glass-card reveal-up" style="--delay:0.2s">
+        <div class="cert-icon" aria-hidden="true"><i class="fas fa-network-wired"></i></div>
+        <div class="cert-body">
+          <div class="cert-badges"><span class="cert-status-badge badge-upcoming">Upcoming</span></div>
+          <span class="cert-provider">Cisco</span>
+          <h3 class="cert-title">Cisco Cybersecurity Certification</h3>
+          <p class="cert-date"><i class="fas fa-calendar-alt"></i> In Progress</p>
+          <p class="cert-desc">Cisco's cybersecurity programme covering network security, threat detection, and security operations fundamentals.</p>
+        </div>
+        <div class="cert-glow" aria-hidden="true"></div>
+      </div>
+
+      <div class="cert-card glass-card reveal-up" style="--delay:0.3s">
+        <div class="cert-icon" aria-hidden="true"><i class="fab fa-microsoft"></i></div>
+        <div class="cert-body">
+          <div class="cert-badges"><span class="cert-status-badge badge-upcoming">Upcoming</span></div>
+          <span class="cert-provider">Microsoft</span>
+          <h3 class="cert-title">Microsoft Azure Fundamentals</h3>
+          <p class="cert-date"><i class="fas fa-calendar-alt"></i> Planned</p>
+          <p class="cert-desc">Azure cloud platform fundamentals — covering cloud concepts, core services, security, privacy, and compliance.</p>
+        </div>
+        <div class="cert-glow" aria-hidden="true"></div>
+      </div>
+
+      <div class="cert-card glass-card reveal-up" style="--delay:0.4s">
+        <div class="cert-icon" aria-hidden="true"><i class="fab fa-aws"></i></div>
+        <div class="cert-body">
+          <div class="cert-badges"><span class="cert-status-badge badge-upcoming">Upcoming</span></div>
+          <span class="cert-provider">Amazon Web Services</span>
+          <h3 class="cert-title">AWS Cloud Practitioner</h3>
+          <p class="cert-date"><i class="fas fa-calendar-alt"></i> Planned</p>
+          <p class="cert-desc">AWS foundational certification covering cloud concepts, core services, billing, pricing, and security of the AWS platform.</p>
+        </div>
+        <div class="cert-glow" aria-hidden="true"></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== GITHUB SECTION ===== -->
+<section id="github-section" class="section github-sec" aria-labelledby="github-heading">
+  <div class="container">
+    <div class="section-header">
+      <p class="section-tag reveal-up">Open Source</p>
+      <h2 class="section-title reveal-up" id="github-heading">My <span class="accent-gradient">GitHub</span></h2>
+      <div class="section-line reveal-up"></div>
+    </div>
+    <div class="github-profile-card glass-card reveal-up">
+      <div class="github-avatar-wrap">
+        <img src="https://github.com/KgothatsoModise.png" alt="Kgothatso Modise GitHub avatar" class="github-avatar" id="githubAvatar" loading="lazy" />
+        <div class="github-avatar-glow" aria-hidden="true"></div>
+      </div>
+      
+      <div class="github-info">
+        <h3 id="githubName">KgothatsoModise</h3>
+        <p id="githubBio" class="github-bio">Aspiring Software Engineer | Python | C# | Cybersecurity | Belgium Campus iTversity</p>
+        <div class="github-stats">
+          <div class="gh-stat"><i class="fas fa-book"></i><span id="ghRepos">—</span><p>Repos</p></div>
+          <div class="gh-stat"><i class="fas fa-users"></i><span id="ghFollowers">—</span><p>Followers</p></div>
+          <div class="gh-stat"><i class="fas fa-user-friends"></i><span id="ghFollowing">—</span><p>Following</p></div>
+          <div class="gh-stat"><i class="fas fa-star"></i><span id="ghStars">—</span><p>Stars</p></div>
+        </div>
+        <a href="https://github.com/KgothatsoModise" target="_blank" rel="noopener noreferrer" class="btn btn-primary ripple" style="margin-top:1.5rem"><i class="fab fa-github"></i> View Profile</a>
+      </div>
+    </div>
+    <div class="github-repos-grid" id="githubRepos">
+      <div class="gh-loading"><i class="fas fa-spinner fa-spin"></i> Loading repositories…</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ACHIEVEMENTS ===== -->
+<section id="achievements" class="section achievements" aria-labelledby="ach-heading">
+  <div class="container">
+    <div class="section-header">
+      <p class="section-tag reveal-up">Milestones</p>
+      <h2 class="section-title reveal-up" id="ach-heading">My <span class="accent-gradient">Achievements</span></h2>
+      <div class="section-line reveal-up"></div>
+    </div>
+    <div class="ach-grid">
+      <div class="ach-card glass-card reveal-up" style="--delay:0.1s"><div class="ach-icon"><i class="fas fa-trophy"></i></div><h3>FNB App Academy</h3><p>Completed the intensive two-week FNB App Academy Python Certification Masterclass.</p></div>
+      <div class="ach-card glass-card reveal-up" style="--delay:0.2s"><div class="ach-icon"><i class="fas fa-project-diagram"></i></div><h3>Software Projects</h3><p>Developed multiple real-world applications in Python, C#, and JavaScript from concept to delivery.</p></div>
+      <div class="ach-card glass-card reveal-up" style="--delay:0.3s"><div class="ach-icon"><i class="fab fa-github"></i></div><h3>GitHub Portfolio</h3><p>Maintained an active public GitHub showcasing consistent coding activity and documentation.</p></div>
+      <div class="ach-card glass-card reveal-up" style="--delay:0.4s"><div class="ach-icon"><i class="fas fa-book"></i></div><h3>Continuous Learning</h3><p>Daily self-improvement through independent study across programming and cybersecurity.</p></div>
+      <div class="ach-card glass-card reveal-up" style="--delay:0.5s"><div class="ach-icon"><i class="fas fa-shield-alt"></i></div><h3>Cybersecurity Path</h3><p>Building towards Cisco, Azure, and AWS certifications for a cybersecurity specialisation.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TESTIMONIALS ===== -->
+<section id="testimonials" class="section testimonials" aria-labelledby="test-heading">
+  <div class="container">
+    <div class="section-header">
+      <p class="section-tag reveal-up">What people say</p>
+      <h2 class="section-title reveal-up" id="test-heading">Testimonials</h2>
+      <div class="section-line reveal-up"></div>
+    </div>
+    <div class="testimonials-grid">
+      <div class="test-card glass-card reveal-up" style="--delay:0.1s">
+        <div class="test-quote" aria-hidden="true"><i class="fas fa-quote-left"></i></div>
+        <p class="test-text">"Kgothatso demonstrates exceptional dedication and a genuine passion for software development. His ability to self-learn and apply new concepts rapidly is outstanding for a student at this stage."</p>
+        <div class="test-author"><div class="test-avatar"><i class="fas fa-user"></i></div><div><strong>Lecturer</strong><span>Belgium Campus iTversity — IT Department</span></div></div>
+      </div>
+      <div class="test-card glass-card reveal-up" style="--delay:0.2s">
+        <div class="test-quote" aria-hidden="true"><i class="fas fa-quote-left"></i></div>
+        <p class="test-text">"A collaborative and detail-oriented teammate. Kgothatso brought strong problem-solving skills to our group project and consistently delivered quality work while supporting the whole team."</p>
+        <div class="test-author"><div class="test-avatar"><i class="fas fa-user"></i></div><div><strong>Fellow Student</strong><span>Belgium Campus iTversity</span></div></div>
+      </div>
+      <div class="test-card glass-card reveal-up" style="--delay:0.3s">
+        <div class="test-quote" aria-hidden="true"><i class="fas fa-quote-left"></i></div>
+        <p class="test-text">"His passion for learning and his drive to grow as a developer is evident in everything he builds. Kgothatso has the mindset and work ethic of someone who will thrive in the tech industry."</p>
+        <div class="test-author"><div class="test-avatar"><i class="fas fa-user"></i></div><div><strong>FNB Academy Mentor</strong><span>FNB App Academy Programme</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section id="contact" class="section contact" aria-labelledby="contact-heading">
+  <div class="container">
+    <div class="section-header">
+      <p class="section-tag reveal-up">Get in touch</p>
+      <h2 class="section-title reveal-up" id="contact-heading">Contact <span class="accent-gradient">Me</span></h2>
+      <div class="section-line reveal-up"></div>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info reveal-left">
+        <h3>Let's <span class="accent-gradient">Connect</span></h3>
+        <p>I'm always open to internship opportunities, graduate programmes, and exciting software development projects. Whether you have an opportunity, a project idea, or just want to connect — my inbox is open.</p>
+        <div class="contact-items">
+          <a href="mailto:kgothimodise34@gmail.com" class="contact-item">
+            <div class="contact-item-icon"><i class="fas fa-envelope"></i></div>
+            <div><strong>Email</strong><span>kgothimodise34@gmail.com</span></div>
+          </a>
+          <a href="tel:+27814575472" class="contact-item">
+            <div class="contact-item-icon"><i class="fas fa-phone"></i></div>
+            <div><strong>Phone</strong><span>081 457 5472</span></div>
+          </a>
+          <div class="contact-item">
+            <div class="contact-item-icon"><i class="fas fa-map-marker-alt"></i></div>
+            <div><strong>Location</strong><span>Kempton Park, Gauteng, South Africa</span></div>
+          </div>
+          <a href="https://github.com/KgothatsoModise" target="_blank" rel="noopener noreferrer" class="contact-item">
+            <div class="contact-item-icon"><i class="fab fa-github"></i></div>
+            <div><strong>GitHub</strong><span>github.com/KgothatsoModise</span></div>
+          </a>
+          <a href="https://www.linkedin.com/in/kgothatso-modise" target="_blank" rel="noopener noreferrer" class="contact-item">
+            <div class="contact-item-icon"><i class="fab fa-linkedin-in"></i></div>
+            <div><strong>LinkedIn</strong><span>linkedin.com/in/kgothatso-modise</span></div>
+          </a>
+        </div>
+      </div>
+      <div class="contact-form-wrap reveal-right">
+        <form class="contact-form glass-card" id="contactForm" novalidate aria-label="Contact form">
+          <div class="form-group">
+            <label for="contactName">Full Name</label>
+            <input type="text" id="contactName" name="name" placeholder="Your full name" required autocomplete="name" />
+            <span class="form-error" id="nameError" role="alert"></span>
+          </div>
+          <div class="form-group">
+            <label for="contactEmail">Email Address</label>
+            <input type="email" id="contactEmail" name="email" placeholder="your@email.com" required autocomplete="email" />
+            <span class="form-error" id="emailError" role="alert"></span>
+          </div>
+          <div class="form-group">
+            <label for="contactSubject">Subject</label>
+            <input type="text" id="contactSubject" name="subject" placeholder="e.g. Internship Opportunity" required />
+            <span class="form-error" id="subjectError" role="alert"></span>
+          </div>
+          <div class="form-group">
+            <label for="contactMessage">Message</label>
+            <textarea id="contactMessage" name="message" rows="5" placeholder="Tell me more…" required></textarea>
+            <span class="form-error" id="messageError" role="alert"></span>
+          </div>
+          <button type="submit" class="btn btn-primary ripple btn-full" id="submitBtn">
+            <i class="fas fa-paper-plane"></i> Send Message
+          </button>
+          <div class="form-success" id="formSuccess" role="alert" hidden>
+            <i class="fas fa-check-circle"></i> Message sent! I'll get back to you soon.
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-cta">
+      <h3>Thank you for visiting my portfolio.</h3>
+      <p>I am always open to internship opportunities, graduate programmes, and exciting software development projects.<br>Let's build something amazing together.</p>
+      <div class="footer-cta-btns">
+        <a href="#contact" class="btn btn-primary ripple"><i class="fas fa-envelope"></i> Get In Touch</a>
+        <a href="assets/Kgothatso_Modise_CV.pdf" download class="btn btn-outline ripple"><i class="fas fa-download"></i> Download CV</a>
+      </div>
+    </div>
+    <div class="footer-divider"></div>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo"><span class="logo-text">KM</span><span class="logo-dot"></span></div>
+        <p class="footer-name">Kgothatso Modise</p>
+        <p class="footer-role">Aspiring Software Engineer</p>
+        <p class="footer-tagline">Building tomorrow's solutions, one line at a time.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#journey">My Journey</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-social">
+        <h4>Connect</h4>
+        <div class="social-icons">
+          <a href="https://github.com/KgothatsoModise" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          <a href="https://www.linkedin.com/in/kgothatso-modise" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="mailto:kgothimodise34@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Kgothatso Modise. Made with <span class="heart">♥</span> using HTML, CSS &amp; JavaScript.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Back to Top -->
+<button class="back-to-top" id="backToTop" aria-label="Back to top"><i class="fas fa-chevron-up"></i></button>
+
+<!-- Scripts -->
+<script src="js/particles.js"></script>
+<script src="js/typing.js"></script>
+<script src="js/github.js"></script>
+<script src="js/animations.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
