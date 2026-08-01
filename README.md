@@ -1,0 +1,3 @@
+This repository contains my personal portfolio website, designed and developed to showcase my skills, projects, certifications, and journey as an aspiring Software Engineer. 
+The portfolio reflects my knowledge and practical experience gained through my studies, personal projects, and continuous learning.
+While building this portfolio, I used my own understanding of web development and software design, with AI assisting in certain areas such as refining ideas, improving layouts, and enhancing the overall user experience. The portfolio represents my work, learning, and commitment to continuously improving my technical skills and creating professional-quality applications.
